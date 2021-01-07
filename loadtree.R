@@ -27,5 +27,7 @@ bretagne_berge <- st_read("sources/patrimoine-arbore-ponctuel-des-voies-navigabl
 guigamp <- st_read("sources/result.csv")
 guigamp <- st_as_sf(guigamp, coords = c("longitude", "latitude"), crs = 4326)
 paris_sud <- st_read("sources/patrimoine-arbore.json")
+haut_de_seine <-st_read("sources/cadastre-vert-les-arbres.json")
+pau <- st_read("sources/gev_AALI_WGS84.shp")
 
 liste_data <- mget(ls())

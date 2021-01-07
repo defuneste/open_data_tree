@@ -143,13 +143,15 @@ table(paris_sud$cplmt_nom)
 haut_de_seine <-st_read("sources/cadastre-vert-les-arbres.json")
 
 nevers2 <- st_read("sources/ARBRES_ORNEMENTS.shp")
+table(nevers2$diametre)
 
 iau_ecoline <- st_read("sources/elements-fixes-ponctuels-de-la-couche-ecoline-dile-de-france.json")
 table(iau_ecoline$ele_txt)
 # si on filtre arbre isolé
 iau_ecoline <- iau_ecoline[iau_ecoline$ele_txt == "Arbre isolé",]
+table(iau_ecoline$controle)
 
-pau <- st_read("sources/arbresall_SHP/gev_AALI_CC43.shp")
+pau <- st_read("sources/gev_AALI_WGS84.shp")
 
 ## nancy est plus compliguée
 
