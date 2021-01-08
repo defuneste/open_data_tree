@@ -41,6 +41,7 @@ vignettes/*.pdf
 
 # sources et graphs
 
+*.pdf
 /sources
 /docs
 /visu
