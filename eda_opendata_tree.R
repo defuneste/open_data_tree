@@ -130,7 +130,7 @@ bretagne_berge <- st_read("sources/patrimoine-arbore-ponctuel-des-voies-navigabl
 bretagne_berge
 
 ### guingamp
-guigamp <- st_read("sources/result.csv")
+guigamp <- st_read("sources/Arbres de la Ville de Guingamp.csv")
 guigamp <- st_as_sf(guigamp, coords = c("longitude", "latitude"), crs = 4326)
 guigamp$Attribut
 #st_write(guigamp, "guigamp.geojson")
@@ -146,7 +146,6 @@ nevers2 <- st_read("sources/ARBRES_ORNEMENTS.shp")
 table(nevers2$diametre)
 
 iau_ecoline <- st_read("sources/elements-fixes-ponctuels-de-la-couche-ecoline-dile-de-france.json")
-table(iau_ecoline$ele_txt)
 # si on filtre arbre isolé
 iau_ecoline <- iau_ecoline[iau_ecoline$ele_txt == "Arbre isolé",]
 table(iau_ecoline$controle)

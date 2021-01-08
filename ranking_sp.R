@@ -1,7 +1,7 @@
 ## ranking espèce
 
 source("loadtree.R")
-,
+source("fonctions_bota.R")
 
 liste_data_dt <- sapply(liste_data, st_drop_geometry) 
 
@@ -10,19 +10,14 @@ names(liste_data_dt)
 # liste de petites corrections rapides
 liste_data_dt$divonne_les_bains_fr$espece[is.na(liste_data_dt$divonne_les_bains_fr$espece)] <- ""
 
-mulhouse_libelle_es <- tolower(liste_data_dt$mulhouse$libelle_es)
+mulhouse_libelle_es <- first_maj(liste_data_dt$mulhouse$libelle_es)
+
 rennes1_genre <- tolower(liste_data_dt$rennes1$genre)
 rennes1_espece <- tolower(liste_data_dt$rennes1$espece)
 rennes1_latin <- paste(rennes1_genre, rennes1_espece)
 rennes2_latin <- tolower(paste(liste_data_dt$rennes2$genre, liste_data_dt$rennes2$espece))
 rennes2_latin <- trimws(
     tolower(paste(liste_data_dt$rennes2$genre, liste_data_dt$rennes2$espece)))
-
-# Capitalise la première lettre du genre
-first_maj <- function(une_liste_de_nom){paste0(toupper(substr(une_liste_de_nom, 1, 1)), substr(une_liste_de_nom, 2, nchar(une_liste_de_nom)))}
-# pas d'accent en latin 
-pas_les_accent <- function(x){gsub(pattern = "[éêè]", replacement = "e", x)}
-
 
 nb_espece <- c(liste_data_dt$agen$nom_latin,
                paste(liste_data_dt$bayonne$genre, liste_data_dt$bayonne$espece),
