@@ -10,7 +10,7 @@ names(liste_data_dt)
 # liste de petites corrections rapides
 liste_data_dt$divonne_les_bains_fr$espece[is.na(liste_data_dt$divonne_les_bains_fr$espece)] <- ""
 
-mulhouse_libelle_es <- first_maj(liste_data_dt$mulhouse$libelle_es)
+ first_maj(liste_data_dt$mulhouse$libelle_es)
 
 rennes1_genre <- tolower(liste_data_dt$rennes1$genre)
 rennes1_espece <- tolower(liste_data_dt$rennes1$espece)

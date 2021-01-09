@@ -32,11 +32,13 @@ Ici je propose de passer par une fonction qui passe tous en miniscule, capitalis
 Voici ma première version: 
 
 ```{r first_maj}
-first_maj <- function(une_liste_de_nom){                        # prend une liste de nom ou un vecteur
-    une_liste_de_nom <- trimwc(tolower(une_liste_de_nom))       # enlève les ws et ninore tous 
-    paste0(toupper(substr(une_liste_de_nom, 1, 1)),             # capitalise la première lettre 
-           substr(une_liste_de_nom, 2, nchar(une_liste_de_nom)) # et la colle au reste decapitalisé
-           ) 
+first_maj <- function(une_liste_de_nom){
+    une_liste_de_nom[is.na(une_liste_de_nom)] <- ""       # eviter les NA dans paste qui deviennent "NA"
+    une_liste_de_nom <- trimws(tolower(une_liste_de_nom)) # virer des white space et tout minorer
+    paste0(toupper(substr(une_liste_de_nom, 1, 1)),       # on capitalise le premier caractère
+           substr(une_liste_de_nom, 2, nchar(une_liste_de_nom)))
+    is.na(une_liste_de_nom) <- une_liste_de_nom == "" # on remet un NA
+    une_liste_de_nom
     }
 ```
 
@@ -45,3 +47,7 @@ first_maj <- function(une_liste_de_nom){                        # prend une list
 Ce sont des valeurs nulles transformées en chaine de caractères. On retrouve ainsi dans des bases des "NANA" (ou "NA NA") : probalement un arbre inconnu qui est "NA" dans le champs genre et "NA" dans l'epithète.  Une concatenation malheureuse nous l'a transformé. (NB nous n'avons pas toujours deux champs genre et espèce mais parfois juste un). 
 
 Ici je pense mettre en place des expressions regulières (à voir à quel niveau, sur quel programme, etc ..)
+
+### la variété (entre parenthèse)
+
+
