@@ -129,7 +129,7 @@ table(divonne_les_bains_fr$etat_entre)
 bretagne_berge <- st_read("sources/patrimoine-arbore-ponctuel-des-voies-navigables-appartenant-a-la-region-bretagne.shp")
 bretagne_berge
 
-### guingamp
+### Guingamp
 guigamp <- st_read("sources/Arbres de la Ville de Guingamp.csv")
 guigamp <- st_as_sf(guigamp, coords = c("longitude", "latitude"), crs = 4326)
 guigamp$Attribut
@@ -157,5 +157,11 @@ pau <- st_read("sources/gev_AALI_WGS84.shp")
 nancy <- sapply(list.files(pattern = "ARBRE_ISOLE.shp$", recursive = T), st_read)
 ncol_nancy <- lapply(nancy, ncol)
 # houdemont pour une raison x ou y n'a pas le meme nombre de col !
-houdemont <- nancy[-6]
+houdemont <- nancy[6]
+houdemont$`sources/RESTITUTION_TOPO_3D_SHP/HOUDEMONT/ARBRE_ISOLE.shp`$Z <- NA
+houdemont$`sources/RESTITUTION_TOPO_3D_SHP/HOUDEMONT/ARBRE_ISOLE.shp` <- 
+    houdemont$`sources/RESTITUTION_TOPO_3D_SHP/HOUDEMONT/ARBRE_ISOLE.shp`[
+        ,c("HAUTEUR",  "DIAMETRE", "TYPE", "CCOCOM", "Z",  "geometry")
+    ]
 nancy <- do.call(rbind, nancy[-6])
+nancy <- rbind(nancy, houdemont$`sources/RESTITUTION_TOPO_3D_SHP/HOUDEMONT/ARBRE_ISOLE.shp`)

@@ -1,5 +1,5 @@
 ---
-title: "A la recherche de normes dans les champs taxonomiques dans les BD"
+title: "A la recherche de normes dans les champs taxonomiques des BD"
 author: "Olivier Leroy"
 date: "1/7/2021"
 output: html_document
@@ -11,7 +11,7 @@ Ici je ne vais prendre que les descriptions du nom des arbres. Les aspects archi
 
 ## Nomenclature botanique 
 
-Un patron fréquent dans les bases de données des arbres est la séparation genre / espèce en deux colonnes (voir plus si on a un nom en trois ou quatres mots) . On a une colonne avec le nom de genre et une seconde avec un epithète. Ainsi *Quercus robur* est du genre *Quercus* et son epithète est *robur*. Cette forme composée en deux mots est recommandée par l'[ICN](https://en.wikipedia.org/wiki/International_Code_of_Nomenclature_for_algae,_fungi,_and_plants). On peut constater que le non de genre à sa première lettre capitalisée ce qui n'est pas le cas de l'epithète. Enfin cette régle est une convention il existe d'autre standarts (prendre un exemple avec le nom du descripteur?). 
+Un patron fréquent dans les bases de données des arbres est la séparation genre / espèce en deux colonnes (voir plus si on a un nom en trois ou quatres mots) . On a une colonne avec le nom de genre et une seconde avec un epithète. Ainsi *Quercus robur* est du genre *Quercus* et son epithète est *robur*. Cette forme composée en deux mots est recommandée par l'[ICN](https://en.wikipedia.org/wiki/International_Code_of_Nomenclature_for_algae,_fungi,_and_plants). On peut constater que le non de genre à sa première lettre capitalisée ce qui n'est pas le cas de l'epithète. Enfin, cette régle est une convention il existe d'autre standarts (prendre un exemple avec le nom du descripteur?). 
 
 Il existe des divisions en dessous de l'éspèce (sous espèce, varitée, cultivar etc..). Dans ce cas on va passer à une nomenclature dîte en trois noms. Il faut alors reprendre les deux premiers mots y ajouter le type (var. pour varité par exemple) et donner ce nom de type. Ainsi on peut avoir *Quercus ilex* subsp. *rotundifolia* pour la sous espèce de chêne vert à glands dit tendres. Il faut noter que les concensus au niveau des sous espèces sont moins fréquents chez les botanistes. 
 

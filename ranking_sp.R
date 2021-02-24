@@ -19,6 +19,9 @@ rennes2_latin <- tolower(paste(liste_data_dt$rennes2$genre, liste_data_dt$rennes
 rennes2_latin <- trimws(
     tolower(paste(liste_data_dt$rennes2$genre, liste_data_dt$rennes2$espece)))
 
+rennes1_latin <- paste(liste_data_dt$rennes1$genre, liste_data_dt$rennes1$espece)
+
+
 nb_espece <- c(liste_data_dt$agen$nom_latin,
                paste(liste_data_dt$bayonne$genre, liste_data_dt$bayonne$espece),
                liste_data_dt$bordeau$nom,
