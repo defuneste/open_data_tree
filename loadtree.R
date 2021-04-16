@@ -34,5 +34,9 @@ iau_ecoline <- st_read("sources/elements-fixes-ponctuels-de-la-couche-ecoline-di
 iau_ecoline <- iau_ecoline[iau_ecoline$ele_txt == "Arbre isolé",]
 argenteuil <- st_read("sources/Les_arbres_de_l_espace_public.geojson")
 limousin_arbres_rq <- st_read("sources/drive-download-20210416T150023Z-001/l_arbres_r74.json") 
+bourgogne_arbres_rq <- st_read("sources/bourgogne_arbre_rq.geojson")
+idf_arbres_rq <- st_read("sources/arbre_remarquable.geojson")
+saint_dizier <- st_read("sources/CA-SAINT-DIZIER-ARBRES_2019.json")
+versailles_parc <- st_read("sources/arbres-dans-les-parcs-de-la-ville-de-versailles.geojson")
 
 liste_data <- mget(ls())
