@@ -33,5 +33,6 @@ nevers2 <- st_read("sources/ARBRES_ORNEMENTS.shp")
 iau_ecoline <- st_read("sources/elements-fixes-ponctuels-de-la-couche-ecoline-dile-de-france.json")
 iau_ecoline <- iau_ecoline[iau_ecoline$ele_txt == "Arbre isolé",]
 argenteuil <- st_read("sources/Les_arbres_de_l_espace_public.geojson")
+limousin_arbres_rq <- st_read("sources/drive-download-20210416T150023Z-001/l_arbres_r74.json") 
 
 liste_data <- mget(ls())
