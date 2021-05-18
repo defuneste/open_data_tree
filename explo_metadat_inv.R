@@ -33,3 +33,9 @@ inv_arbre <- rbind(inv_arbre, annee_vide)
 
 inv_arbre[!duplicated(inv_arbre$annee),]
 
+library(ggplot2)
+
+ggplot(inv_arbre, aes(x = annee, y = compte)) +
+    geom_col() +
+    theme_bw() +
+    scale_x_continuous(labels = annee, breaks = annee)
