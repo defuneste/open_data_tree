@@ -5,7 +5,7 @@
 
 # I Chargement des données et package ###########
 
-pkgs <-  c("openxlsx","ggplot2")
+pkgs <-  c("openxlsx","ggplot2", "magrittr")
 
 inst <- lapply(pkgs, 
                library, # piste amelioration inclure une verif et si non install
@@ -13,13 +13,19 @@ inst <- lapply(pkgs,
 
 metada_inv <- openxlsx::read.xlsx("intermed/tentative_synthesev1.xlsx")
 
+metada_inv <- read.csv("intermed/tentative_synthesev1.csv")
+
+# si pas de date de publication, date de modification 
+metada_inv$Date_publication[ is.na(metada_inv$Date_publication) ] <- metada_inv$Date_modif[ is.na(metada_inv$Date_publication) ] 
+# hideux
+metada_inv$Date_publication[12] <- NA
+
 # correction de la date 
 metada_inv$year <- substr(metada_inv$Date_publication, 
                           nchar(metada_inv$Date_publication) - 3,
                           nchar(metada_inv$Date_publication))
 
-# si pas de date de publication, date de modification 
-metada_inv$Date_publication[ is.na(metada_inv$Date_publication) ] <- metada_inv$Date_modif[ is.na(metada_inv$Date_publication) ] 
+metada_inv$year <- as.numeric(metada_inv$year)
 
 # première version d'exploration
 barplot(
@@ -43,11 +49,27 @@ names(inv_arbre) <- c("annee", "compte")
 inv_arbre$annee <- as.numeric(as.character(inv_arbre$annee))
 inv_arbre <- rbind(inv_arbre, annee_vide)
 
-inv_arbre[!duplicated(inv_arbre$annee),]
+inv_arbre <- inv_arbre[!duplicated(inv_arbre$annee),]
 
-library(ggplot2)
+inv_arbre <- inv_arbre[order(inv_arbre$annee),]
 
-ggplot(inv_arbre, aes(x = annee, y = compte)) +
-    geom_col() +
+barplot(inv_arbre$compte, 
+        names.arg = inv_arbre$annee,
+        las = 2,
+        #ylim = c(0,8),
+        horiz = TRUE,
+        col = "lightblue")
+
+# me fait cracher rstudio
+g <-inv_arbre  %>%  
+    ggplot(aes(x = annee, y = compte)) +
+    geom_col(fill="steelblue3") +
     theme_bw() +
-    scale_x_continuous(labels = annee, breaks = annee)
+    theme(panel.grid.major.y = element_blank(),
+          panel.grid.minor.y = element_blank()) +
+    ylab("Nb de Jeux de données publiés") +
+    xlab("") + 
+    coord_flip() + 
+    scale_x_continuous(breaks=inv_arbre$annee[inv_arbre$compte != 0])
+
+ggsave("open_data_anne.png") 
